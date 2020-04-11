@@ -37,7 +37,7 @@ int main() {
 
 	cbreak();
 	noecho();
-	nodelay(stdscr, TRUE);
+	timeout(50);
 
 	curs_set(0);
 
@@ -45,7 +45,7 @@ int main() {
 	int ch;
 
 	while (1) {
-		while ((ch = getch()) != ERR) {
+		if ((ch = getch()) != ERR) {
 			auto it = KB.find(ch);
 			if (it != KB.end())
 				it->second();
@@ -66,7 +66,5 @@ int main() {
 			addch(i < cnt ? ACS_PI : ' ');
 		addch(']');
 		refresh();
-
-		this_thread::sleep_for(50ms);
 	}
 }
