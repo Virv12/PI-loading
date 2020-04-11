@@ -39,6 +39,8 @@ int main() {
 	noecho();
 	nodelay(stdscr, TRUE);
 
+	curs_set(0);
+
 	long long st = gettime();
 	int ch;
 
