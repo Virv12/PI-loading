@@ -1,12 +1,17 @@
-CC=g++ -std=c++17 -Wall -Wextra -lncurses -Ofast
+CC=g++ -std=c++17 -Wall -Wextra -Iincludes -lncurses -Ofast
+SRC=$(wildcard src/*.cpp)
 
-main: main.o config.cpp
+main: obj/main.o config.cpp
 	$(CC) -o $@ $^
 
-main.o: main.cpp
+obj/%.o: src/%.cpp | obj/
 	$(CC) -c -o $@ $^
 
 clean:
-	rm -rf main main.o
+	rm -rf obj main
+
+%/:
+	mkdir -p $*
 
 .PHONY: clean
+.SECONDARY:

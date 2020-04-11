@@ -2,20 +2,14 @@
 #include <ncurses.h>
 using namespace std;
 
-int y = 0;
-
 void quit() {
 	endwin();
 	exit(0);
 }
 
-void move_up() {
-	y = max(0, y-1);
-}
-
-void move_down() {
-	y = min(LINES-1, y+1);
-}
+int y = 0;
+void move_up()   { y = max(0, y-1);       }
+void move_down() { y = min(LINES-1, y+1); }
 
 void bold() {
 	static bool b = false;
@@ -34,11 +28,9 @@ extern map<int, void(*)(void)> KB;
 
 int main() {
 	initscr();
-
 	cbreak();
 	noecho();
 	timeout(50);
-
 	curs_set(0);
 
 	long long st = gettime();

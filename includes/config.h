@@ -1,5 +1,4 @@
 #include <map>
-using std::map;
 
 void quit();
 void move_up();
