@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #include <ncurses.h>
+
+#include <config.h>
 using namespace std;
 
 void quit() {
@@ -24,9 +26,7 @@ long long gettime() {
 	return t.tv_sec * 1e9 + t.tv_nsec;
 }
 
-extern map<int, void(*)(void)> KB;
-
-int main() {
+int start() {
 	initscr();
 	cbreak();
 	noecho();
@@ -59,4 +59,6 @@ int main() {
 		addch(']');
 		refresh();
 	}
+
+	return 0;
 }
